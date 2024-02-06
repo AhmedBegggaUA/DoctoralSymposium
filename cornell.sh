@@ -11,7 +11,7 @@ do
                     for wd in 0.0005 0.001
                     do
                         echo "Running $dataset with $hidden_channels hidden channels and $num_centers num_centers and $lr learning rate and $dropout dropout and $wd weight decay"
-                        python main.py --dataset $dataset --hidden_channels $hidden_channels --num_centers $num_centers --lr $lr --dropout $dropout  --epochs 1000  --wd $wd
+                        python main.py --dataset $dataset --hidden_channels $hidden_channels --num_centers $num_centers --lr $lr --dropout $dropout  --epochs 1000  --wd $wd --cuda cuda:0
                         echo $(tail -n 1 results.csv)
                         # Now we print the best row with the highest Accuracy (penuultimate column) 
                         echo "Best row:"

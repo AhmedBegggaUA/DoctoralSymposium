@@ -1,5 +1,0 @@
-dataset,hidden_channels,lr,dropout,epochs,num_centers,wd,Accuracy,std
-texas,128,0.001,0.3,3000,20,10.0,74.86,6.4
-texas,16,0.01,0.3,3000,15,0.0005,66.22,4.56
-texas,128,0.01,0.3,3000,15,0.0005,79.46,5.57
-texas,64,0.03,0.2,3000,5,0.0005,80.81,5.19

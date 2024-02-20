@@ -1,7 +1,7 @@
 import torch
 # Trace of a tensor [1,k,k]
 def _rank3_trace(x):
-    return torch.einsum('ij->i', x)
+    return torch.einsum('ij->i', x.to_dense())
 def pump(s, adj): 
     k = s.size(-1)
     s = torch.tanh(s) # torch.Size([20, N, k]) One k for each N of each graph

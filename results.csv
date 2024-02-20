@@ -1,0 +1,2 @@
+dataset,hidden_channels,lr,dropout,epochs,num_eigen,wd,cuda,normalize,early_stop,Accuracy,std
+texas,16,0.01,0.5,1000,5,0.0005,cuda:0,True,500,84.32,8.95

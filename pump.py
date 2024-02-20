@@ -5,7 +5,7 @@ def _rank3_trace(x):
 def pump(s, adj): 
     k = s.size(-1)
     s = torch.tanh(s) # torch.Size([20, N, k]) One k for each N of each graph
-    
+    print(torch.matmul(torch.matmul(s.t(),adj), s))
     CT_num = _rank3_trace(torch.matmul(torch.matmul(s.t(),adj), s)) # Tr(S^T A S) 
     # Degree sparse
     degrees = adj.sum(dim=1).coalesce().values()

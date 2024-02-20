@@ -9,7 +9,7 @@ def pump(s, adj):
     CT_num = _rank3_trace(torch.matmul(torch.matmul(s.t(),adj.to_dense()), s)) # Tr(S^T A S) 
     # Degree sparse
     degrees = adj.sum(dim=1).coalesce().values()
-    deg = torch.diag(degrees)
+    deg = torch.diag(degrees).to_device(s.device)
     #deg = torch.sparse_coo_tensor(adj.coalesce().indices(), degrees, size=(adj.size(0), adj.size(0)), dtype=s.dtype, device=s.device)
     CT_den = _rank3_trace(torch.matmul(torch.matmul(s.t(), deg.to_dense()), s))  # Tr(S^T D S) 
     # Mask with adjacency if proceeds 
@@ -22,4 +22,4 @@ def pump(s, adj):
         ss / torch.norm(ss, dim=(-1, -2), keepdim=True) -
         i_s )  
     ortho_loss = torch.mean(ortho_loss)
-    return s, CT_loss, ortho_loss,adj 
+    return s, CT_loss, ortho_loss 

@@ -26,7 +26,7 @@ class EIGENX(torch.nn.Module):
         # MLP(X)
         xX = self.mlpx(data.x)
         # Pump
-        xA, pump_loss, ortho_loss,_= pump(xA,adj)
+        xA, pump_loss, ortho_loss= pump(xA,adj)
         xA = xA.squeeze(0)
         z = torch.cat([xX, xA], dim=1)
         z = F.dropout(z, p=self.drop_out, training=self.training)
